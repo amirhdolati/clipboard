@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <p><label for="name">CROSS PLATFORM CLIPBOARD</label></p>
+    </head>
+    <body>
+        <textarea rows="30" cols="60" 
+        id="clipboard-text"
+        name="clipboard-text">{{ text_field }}</textarea>           
+        <button onclick="SubmitFunction()" name="button_save">save</button>
+        <button onclick="ReloadPage()" name="button_reload">reload</button>
+        <script>
+            function ReloadPage()
+            {
+              location = location;
+            }
+            function SubmitFunction() 
+            {
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", "http://127.0.0.1:5000/api", true);
+              xhr.setRequestHeader('Content-Type', 'application/json');
+              xhr.send(JSON.stringify({
+                text_field:document.getElementById("clipboard-text").value
+              }));
+            }
+        </script>
+    </body>
+</html>
