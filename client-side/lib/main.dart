@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Icon(Icons.network_wifi),
           onPressed: () => showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (_) => ServerInformation(),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Center(child: CircularProgressIndicator());
                 default:
                   if (snapshot.data == true) {
-                    return SingleChildScrollView(child: Clipboard());
+                    return Clipboard();
                   } else
                     return Dialog(
                         child: Text(
